@@ -7,7 +7,7 @@
     "optimize:images": "gulp images",
     "build": "gulp build",
     "start": "gulp serve",
-    "prepush": "yarn format && yarn lint",
+    "prepush": "npm run format && npm run lint",
     "lint": "eslint src/scripts/**/*.js --color",
     "format": "prettier --write --single-quote --semi=true --parser=flow --tab-width=2 \"src/scripts/**/*.js\""
   },
