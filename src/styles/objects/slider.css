@@ -1,0 +1,83 @@
+.projects-slider , .slider {
+  .slick-dots {
+    margin: 20px 0 0 0;
+    padding: 0;
+    text-align: center;
+    li {
+      display: inline-block;
+      margin-inline: 10px;
+      &.slick-active {
+        button {
+          background-color: var(--yellow);
+        }
+      }
+    }
+    button {
+      cursor: pointer;
+      outline: none;
+      background-color: #fff;
+      text-indent: -9999px;
+      font-size: 0;
+      padding: 0;
+      width: 10px;
+      height: 10px;
+      border: 1px solid var(--yellow);
+      border-radius: 50%;
+      &:focus {
+        border-style: dashed;
+        &:active {
+          border-style: solid;
+        }
+      }
+    }
+  }
+  &[data-nav-for] + [data-nav-for] {
+    .slick-slide {
+      padding-inline: 5px;
+      img {
+        vertical-align: top;
+      }
+    }
+  }
+}
+
+.slick-next, .slick-prev {
+    width: 50px;
+    height: 50px;
+}
+.slick-prev {
+    left: 50px;
+    z-index: 2;
+}
+
+.slick-next {
+    right: 50px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    background-image: url('../images/slider-arrow-right.svg');
+    background-size: cover;
+}
+
+.slick-prev {
+    width: 40px;
+    height: 40px;
+    background-image: url('../images/slider-arrow-left.svg');
+    background-size: cover;
+}
+
+.slick-next:before, .slick-prev:before {
+  content: none;
+}
+
+.slick-prev:focus, .slick-prev:hover {
+  background: url(../images/slider-arrow-left.svg) transparent;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.slick-next:focus, .slick-next:hover {
+  background: url(../images/slider-arrow-right.svg) transparent;
+  background-size: cover;
+  opacity: 0.5;
+}

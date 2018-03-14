@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Nexa";
+  src:  url("../fonts/Nexa/Nexa-Light.woff2") format("woff2"),
+        url("../fonts/Nexa/Nexa-Light.woff") format("woff"),
+        url("../fonts/Nexa/Nexa-Light.otf") format("opentype");
+  font-style:  normal;
+  font-weight:  300;
+}
+@font-face {
+  font-family: "Nexa";
+  src:  url("../fonts/Nexa/Nexa-Bold.woff2") format("woff2"),
+        url("../fonts/Nexa/Nexa-Bold.woff") format("woff"),
+        url("../fonts/Nexa/Nexa-Bold.otf") format("opentype");
+  font-style:  normal;
+  font-weight:  400;
+}
+@font-face {
+  font-family:"Circe-Bold";
+  src:  url("../fonts/Circe/Circe-Bold.woff2") format("woff2"),
+      url("../fonts/Circe/Circe-Bold.woff") format("woff"),
+      url("../fonts/Circe/Circe-Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family:"Circe-Extra-Bold";
+  src:  url("../fonts/Circe/Circe-ExtraBold.woff2") format("woff2"),
+        url("../fonts/Circe/Circe-ExtraBold.woff") format("woff"),
+        url("../fonts/Circe/Circe-ExtraBold.otf") format("ttf");
+  font-style:  normal;
+  font-weight:  600;
+}
+@font-face {
+  font-family:"Circe-Extra-Light";
+  src:  url("../fonts/Circe/Circe-ExtraLight.woff2") format("woff2"),
+        url("../fonts/Circe/Circe-ExtraLight.woff") format("woff"),
+        url("../fonts/Circe/Circe-ExtraLight.otf") format("ttf");
+  font-style:  normal;
+  font-weight:  100;
+}

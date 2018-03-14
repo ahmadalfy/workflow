@@ -1,0 +1,129 @@
+.container {
+  max-width: 1200px;
+  width: 70%;
+  margin-inline: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+@media  screen
+and (min-width: 320px)
+  and (max-width: 767px){
+  padding-left: 30px;
+  padding-right: 30px;
+  }
+}
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+  & > .col {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  &--reversed {
+    & > .col {
+      float: right;
+      &:first-child {
+        padding-right: 0;
+        padding-left: 40px;
+      }
+      &:last-child {
+        padding-left: 0;
+        padding-right: 40px;
+      }
+    }
+  }
+  &--no-padding {
+    & > .col {
+      padding: 0 !important;
+    }
+  }
+  &.equal-height {
+    display: flex;
+    margin-left: 0;
+    margin-right: 0;
+    &::before, &::after {
+      content: none;
+    }
+    & > .col {
+      float: none;
+    }
+  }
+  &.vertically-center {
+    align-items: center;
+  }
+  &--2 {
+    & > .col {
+      width: 50%;
+    }
+  }
+  &--3 {
+    & > .col {
+      width: 33.3%;
+    }
+    & > .col--two-thirds {
+      width: 66%;
+    }
+  }
+  &--4 {
+    & > .col {
+      width: 25%;
+    }
+    & > .col--two-fourth {
+      width: 50%;
+    }
+  }
+  &--5 {
+    & > .col {
+      width: 20%;
+    }
+  }
+  & > .full { width: 100%; }
+  & > .two-thirds { width: 66.6%; }
+  & > .three-fourths { width: 75%; }
+  & > .two-fifths { width: 40%; }
+  & > .three-fifths { width: 60%; }
+  & > .four-fifths { width: 80%; }
+}
+.slider-container{
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  .single-event-slider li {
+    position: relative;
+  }
+  .single-event-slider li:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 40%;
+  }
+  .single-event-slider li img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .single-event-slider-nav {
+    .slick-track {
+      margin: 0;
+    }
+    .slick-slide {
+      padding: 0 5px;
+    }
+  }
+@media  screen
+and (min-width: 320px)
+  and (max-width: 767px){
+  padding-left: 30px;
+  padding-right: 30px;
+  }
+}

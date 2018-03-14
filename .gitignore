@@ -1,0 +1,10 @@
+node_modules
+dist
+.tmp
+bower_components
+test/bower_components
+.DS_STORE
+extra/
+deploy.sh
+
+*.log

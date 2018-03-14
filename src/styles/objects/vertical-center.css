@@ -1,0 +1,8 @@
+.vertical-center {
+  display: table;
+  width: 100%;
+  .wrapper {
+    vertical-align: middle;
+    display: table-cell;
+  }
+}

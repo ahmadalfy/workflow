@@ -1,0 +1,12 @@
+.content {
+  text-align: center;
+  font-weight: 300;
+  padding-bottom: 30px;
+  p {
+    /* max-width: 700px; */
+    margin-inline: auto;
+    max-width: 100%;
+    line-height: 2.2;
+    letter-spacing: 1px;
+  }
+}
