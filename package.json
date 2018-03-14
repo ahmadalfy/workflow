@@ -8,7 +8,7 @@
     "build": "gulp build",
     "start": "gulp serve",
     "precommit": "yarn lint",
-    "lint": "eslint src/scripts/**/*/.js --debug --color",
+    "lint": "eslint src/scripts/**/*.js --color",
     "format": "prettier --write --single-quote --semi=true --parser=flow --tab-width=2 \"src/scripts/**/*.js\""
   },
   "devDependencies": {
