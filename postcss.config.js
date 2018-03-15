@@ -5,9 +5,9 @@ module.exports = {
     'postcss-dir-pseudo-class': {},
     'postcss-cssnext': {},
     'postcss-nested': {},
-    // 'postcss-retina-bg-img': {
-    //   retinaSuffix: '@2x',
-    // },
+    'postcss-retina-bg-img': {
+      retinaSuffix: '@2x',
+    },
     // cssnano: {},
   },
 };
