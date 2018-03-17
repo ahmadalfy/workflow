@@ -62,6 +62,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
+    "gulp-uglify": "^3.0.0"
   },
   "browserslist": [
     "defaults",
