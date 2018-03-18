@@ -21,7 +21,7 @@ const gulpStylelint = require('gulp-stylelint');
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-var dev = false;
+var dev = true;
 gulp.task('styles', () => {
   return gulp
     .src('./src/styles/main.css')
