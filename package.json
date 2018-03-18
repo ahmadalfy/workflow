@@ -4,7 +4,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "optimize:images": "gulp images",
+    "optimize:images": "gulp optimize:images",
     "build": "gulp build",
     "start": "gulp serve",
     "prepush": "npm run lint:js && npm run lint:css",
