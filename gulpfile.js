@@ -234,7 +234,7 @@ gulp.task('serve', () => {
     ['clean:serve'],
     ['lint:js', 'lint:css'],
     ['views', 'styles', 'scripts', 'fonts', 'svgSprite'],
-    ['images', 'modernizr:serve'],
+    ['modernizr:serve'],
     () => {
       browserSync.init({
         notify: false,
@@ -249,8 +249,9 @@ gulp.task('serve', () => {
 
       gulp.watch(['.tmp/*.html', 'src/images/**/*', '.tmp/fonts/**/*']).on('change', reload);
       gulp.watch('src/**/*.pug', ['views']);
-      gulp.watch('src/styles/**/*.css', ['styles']);
-      gulp.watch('src/scripts/**/*.js', ['scripts']);
+      gulp.watch('src/styles/**/*.css', ['styles', 'lint:css']);
+      gulp.watch('src/scripts/**/*.js', ['scripts', 'lint:js']);
+      gulp.watch('src/images/**/*', ['optimize:images']);
       gulp.watch('src/fonts/**/*', ['fonts']);
       gulp.watch('bower.json', ['fonts']);
     }
@@ -259,7 +260,7 @@ gulp.task('serve', () => {
 
 // @Task `build` is used to build a production ready dist
 gulp.task('build', () => {
-  deb = false;
+  dev = false;
   runSequence(
     ['clean:build'],
     ['html', 'svgSprite', 'fonts', 'extras'],
