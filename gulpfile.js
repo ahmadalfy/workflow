@@ -16,6 +16,7 @@ const buffer = require('vinyl-buffer');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const revAll = require('gulp-rev-all');
+const gulpStylelint = require('gulp-stylelint');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -77,7 +78,7 @@ gulp.task('views', () => {
     .pipe(reload({ stream: true }));
 });
 
-gulp.task('html', ['lint', 'views', 'styles', 'scripts'], () => {
+gulp.task('html', ['lint-css', 'lint', 'views', 'styles', 'scripts'], () => {
   return gulp
     .src('.tmp/**/*[.html, .js, .css]')
     .pipe($.useref({ searchPath: ['.tmp', 'src', '.'] }))
@@ -150,6 +151,14 @@ gulp.task('extras', () => {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('lint-css', function lintCssTask() {
+  return gulp.src('src/styles/**/*.css').pipe(
+    gulpStylelint({
+      reporters: [{ formatter: 'string', console: true }]
+    })
+  );
+});
+
 // I dont need to clean dist as the clean task is called on serve only
 gulp.task('clean:build', del.bind(null, ['dist']));
 gulp.task('clean:serve', del.bind(null, ['.tmp']));
@@ -208,25 +217,30 @@ gulp.task('serve:test', ['scripts'], () => {
 
 // @Task `serve` is used to serve the content in dev mode
 gulp.task('serve', () => {
-  runSequence(['clean:serve'], ['views', 'styles', 'scripts', 'fonts', 'svgSprite'], () => {
-    browserSync.init({
-      notify: false,
-      port: 9000,
-      server: {
-        baseDir: ['.tmp', 'src'],
-        routes: {
-          '/node_modules': 'node_modules'
+  runSequence(
+    ['clean:serve'],
+    ['lint', 'lint-css'],
+    ['views', 'styles', 'scripts', 'fonts', 'svgSprite'],
+    () => {
+      browserSync.init({
+        notify: false,
+        port: 9000,
+        server: {
+          baseDir: ['.tmp', 'src'],
+          routes: {
+            '/node_modules': 'node_modules'
+          }
         }
-      }
-    });
+      });
 
-    gulp.watch(['.tmp/*.html', 'src/images/**/*', '.tmp/fonts/**/*']).on('change', reload);
-    gulp.watch('src/**/*.pug', ['views']);
-    gulp.watch('src/styles/**/*.css', ['styles']);
-    gulp.watch('src/scripts/**/*.js', ['scripts']);
-    gulp.watch('src/fonts/**/*', ['fonts']);
-    gulp.watch('bower.json', ['fonts']);
-  });
+      gulp.watch(['.tmp/*.html', 'src/images/**/*', '.tmp/fonts/**/*']).on('change', reload);
+      gulp.watch('src/**/*.pug', ['views']);
+      gulp.watch('src/styles/**/*.css', ['styles']);
+      gulp.watch('src/scripts/**/*.js', ['scripts']);
+      gulp.watch('src/fonts/**/*', ['fonts']);
+      gulp.watch('bower.json', ['fonts']);
+    }
+  );
 });
 
 // @Task `build` is used to build a production ready dist
