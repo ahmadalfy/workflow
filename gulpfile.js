@@ -57,9 +57,10 @@ function lint(files) {
     .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
 }
 
-gulp.task('lint', () => {
+gulp.task('lint:js', () => {
   return lint('src/scripts/**/*.js').pipe(gulp.dest('src/scripts'));
 });
+
 gulp.task('lint:test', () => {
   return lint('test/spec/**/*.js').pipe(gulp.dest('test/spec'));
 });
@@ -78,7 +79,7 @@ gulp.task('views', () => {
     .pipe(reload({ stream: true }));
 });
 
-gulp.task('html', ['lint-css', 'lint', 'views', 'styles', 'scripts'], () => {
+gulp.task('html', ['lint:css', 'lint:js', 'views', 'styles', 'scripts'], () => {
   return gulp
     .src('.tmp/**/*[.html, .js, .css]')
     .pipe($.useref({ searchPath: ['.tmp', 'src', '.'] }))
@@ -124,13 +125,19 @@ gulp.task('fonts', () => {
     .pipe($.if(dev, gulp.dest('.tmp/fonts'), gulp.dest('dist/fonts')));
 });
 
-gulp.task('modernizr', () => {
-  gulp
-    .src(['dist/scripts/{,*/}*.js', 'dist/styles/{,*/}*.css', '!dist/scripts/vendor/*'])
-    .pipe($.modernizr())
-    .pipe($.uglify())
-    .pipe(gulp.dest('dist/scripts/vendor/'));
-});
+function modernizerTask(dest) {
+  return () => {
+    gulp
+      .src([`${dest}/scripts/{,*/}*.js`, `${dest}/styles/{,*/}*.css`, `!${dest}/scripts/vendor/*`])
+      .pipe($.modernizr())
+      .pipe($.uglify())
+      .pipe(gulp.dest(`${dest}/scripts/vendor/`));
+  };
+}
+
+gulp.task('modernizr:serve', modernizerTask('.tmp'));
+
+gulp.task('modernizr:build', modernizerTask('dist'));
 
 gulp.task('rev', () => {
   gulp
@@ -151,7 +158,7 @@ gulp.task('extras', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('lint-css', function lintCssTask() {
+gulp.task('lint:css', function lintCssTask() {
   return gulp.src('src/styles/**/*.css').pipe(
     gulpStylelint({
       reporters: [{ formatter: 'string', console: true }]
@@ -164,7 +171,7 @@ gulp.task('clean:build', del.bind(null, ['dist']));
 gulp.task('clean:serve', del.bind(null, ['.tmp']));
 
 // @Task is used to optimize images in src directory
-gulp.task('images', () => {
+gulp.task('optimize:images', () => {
   return gulp
     .src('src/images/**/*')
     .pipe(
@@ -182,6 +189,12 @@ gulp.task('images', () => {
       )
     )
     .pipe(gulp.dest('dist/images'));
+});
+
+gulp.task('images', () => {
+  return gulp
+    .src('src/images/**/*')
+    .pipe($.if(dev, gulp.dest('.tmp/images'), gulp.dest('dist/images')));
 });
 
 // @Task unused one
@@ -219,8 +232,9 @@ gulp.task('serve:test', ['scripts'], () => {
 gulp.task('serve', () => {
   runSequence(
     ['clean:serve'],
-    ['lint', 'lint-css'],
+    ['lint:js', 'lint:css'],
     ['views', 'styles', 'scripts', 'fonts', 'svgSprite'],
+    ['images', 'modernizr:serve'],
     () => {
       browserSync.init({
         notify: false,
@@ -249,7 +263,7 @@ gulp.task('build', () => {
   runSequence(
     ['clean:build'],
     ['html', 'svgSprite', 'fonts', 'extras'],
-    ['rev', 'modernizr'],
+    ['rev', 'modernizr:build', 'images'],
     () => {
       return gulp.src('dist/**/*').pipe($.size({ title: 'build', gzip: true }));
     }
