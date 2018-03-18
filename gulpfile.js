@@ -17,6 +17,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const revAll = require('gulp-rev-all');
 const gulpStylelint = require('gulp-stylelint');
+const workbox = require('workbox-build');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -24,7 +25,7 @@ const reload = browserSync.reload;
 var dev = true;
 gulp.task('styles', () => {
   return gulp
-    .src('./src/styles/main.css')
+    .src('./src/styles/*.css')
     .pipe(sourcemaps.init())
     .pipe($.plumber())
     .pipe($.postcss())
@@ -165,6 +166,50 @@ gulp.task('lint:css', function lintCssTask() {
     })
   );
 });
+//Pre-caching
+function generateSW(dist) {
+  return workbox.generateSW({
+    globDirectory: dist,
+    globPatterns: ['**/*.{html,js,css}'],
+    swDest: `${dist}/sw.js`,
+    clientsClaim: true,
+    skipWaiting: true,
+    runtimeCaching: [
+      {
+        urlPattern: /\.jpg$/,
+        handler: 'cacheFirst'
+      }
+    ]
+  });
+}
+
+gulp.task('sw:build', () => {
+  return generateSW('dist')
+    .then(({ warnings }) => {
+      // In case there are any warnings from workbox-build, log them.
+      for (const warning of warnings) {
+        console.warn(warning);
+      }
+      console.info('Service worker generation completed.');
+    })
+    .catch(error => {
+      console.warn('Service worker generation failed:', error);
+    });
+});
+
+gulp.task('sw:serve', () => {
+  return generateSW('.tmp')
+    .then(({ warnings }) => {
+      // In case there are any warnings from workbox-build, log them.
+      for (const warning of warnings) {
+        console.warn(warning);
+      }
+      console.info('Service worker generation completed.');
+    })
+    .catch(error => {
+      console.warn('Service worker generation failed:', error);
+    });
+});
 
 // I dont need to clean dist as the clean task is called on serve only
 gulp.task('clean:build', del.bind(null, ['dist']));
@@ -235,6 +280,7 @@ gulp.task('serve', () => {
     ['lint:js', 'lint:css'],
     ['views', 'styles', 'scripts', 'fonts', 'svgSprite'],
     ['modernizr:serve'],
+    ['sw:serve'],
     () => {
       browserSync.init({
         notify: false,
@@ -265,6 +311,7 @@ gulp.task('build', () => {
     ['clean:build'],
     ['html', 'svgSprite', 'fonts', 'extras'],
     ['rev', 'modernizr:build', 'images'],
+    ['sw:build'],
     () => {
       return gulp.src('dist/**/*').pipe($.size({ title: 'build', gzip: true }));
     }
