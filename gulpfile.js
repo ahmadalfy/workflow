@@ -166,6 +166,7 @@ gulp.task('lint:css', function lintCssTask() {
     })
   );
 });
+
 //Pre-caching
 function generateSW(dist) {
   return workbox.generateSW({
