@@ -1,85 +1,45 @@
 .button {
   display: inline-block;
-  text-decoration: none;
+  height: 50px;
+  line-height: 48px;
+  border-radius: 25px;
+  padding: 0 35px;
+  border: 1px solid;
+  font-family: inherit;
+  box-shadow: 0 7px 21px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  border-width: 1px;
-  border-style: solid;
-  line-height: 40px;
-  padding: 0 30px;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: var(--dark-yellow);
-  letter-spacing: 2px;
-  &:hover {
-    background-color: var(--dark-yellow);
-    color: #fff;
+  text-align: center;
+  &:focus {
+    outline: none;
+    transform: translate(2px, 2px);
+    box-shadow: none;
   }
-  &.unit-details-link {
-    letter-spacing: 2px;
-    font-weight: lighter;
+  &--plain {
+    background: transparent;
+    border: 0;
+    line-height: 1;
+    padding: 0;
+    box-shadow: none;
+  }
+  &--primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+  }
+  &--secondary {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
   }
   &--outline {
     background: transparent;
-    color: #fff;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7), inset 0px 0px 2px rgba(0, 0, 0, 0.7);
-    &:hover {
-      border-color: #b79b3a;
-      box-shadow: none;
-      text-shadow: none;
+    box-shadow: none;
+    &.button--secondary {
+      color: #000;
     }
   }
-  &--solid {
-    color: #fff;
-    background: var(--dark-yellow);
-    border-color: var(--dark-yellow);
-  }
-  &--arrow{
-    font-size: 12px;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 auto;
-    border: none;
-    padding-left: 30px;
-    padding-right: 120px;
-    height: 54px;
-    line-height: 58px;
-    text-transform: uppercase;
-    color: #fff;
-    font-family: 'Nexa';
-    text-decoration: none;
-    background-color: var(--dark-yellow);
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    letter-spacing: 2px;
-  &::after{
-      content: '';
-      width: 52px;
-      height: 54px;
-      position: absolute;
-      right: 0;
-      background-size: 100px;
-      background-position: -50px;
-      background-color: var(--darker-yellow);
-    }
+  &--block {
+    width: 100%;
+    padding-inline: 15px;
   }
 }
-@media  screen
-  and (min-width: 320px)
-  and (max-width: 767px){
-    .button--arrow{
-      padding-left: 20px;
-      padding-right: 110px;
-      &::after{
-        content: '';
-        width: 50px;
-        height: 54px;
-        position: absolute;
-        right: 0;
-        background-size: 100px;
-        background-position: -50px;
-        background-color: var(--darker-yellow);
-      }
-    }
-  }
