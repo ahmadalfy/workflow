@@ -16,14 +16,16 @@ const buffer = require('vinyl-buffer');
 const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const revAll = require('gulp-rev-all');
+const gulpStylelint = require('gulp-stylelint');
+const workbox = require('workbox-build');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-var dev = false;
+var dev = true;
 gulp.task('styles', () => {
   return gulp
-    .src('./src/styles/main.css')
+    .src('./src/styles/*.css')
     .pipe(sourcemaps.init())
     .pipe($.plumber())
     .pipe($.postcss())
@@ -56,9 +58,10 @@ function lint(files) {
     .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
 }
 
-gulp.task('lint', () => {
+gulp.task('lint:js', () => {
   return lint('src/scripts/**/*.js').pipe(gulp.dest('src/scripts'));
 });
+
 gulp.task('lint:test', () => {
   return lint('test/spec/**/*.js').pipe(gulp.dest('test/spec'));
 });
@@ -77,7 +80,7 @@ gulp.task('views', () => {
     .pipe(reload({ stream: true }));
 });
 
-gulp.task('html', ['lint', 'views', 'styles', 'scripts'], () => {
+gulp.task('html', ['lint:css', 'lint:js', 'views', 'styles', 'scripts'], () => {
   return gulp
     .src('.tmp/**/*[.html, .js, .css]')
     .pipe($.useref({ searchPath: ['.tmp', 'src', '.'] }))
@@ -123,13 +126,19 @@ gulp.task('fonts', () => {
     .pipe($.if(dev, gulp.dest('.tmp/fonts'), gulp.dest('dist/fonts')));
 });
 
-gulp.task('modernizr', () => {
-  gulp
-    .src(['dist/scripts/{,*/}*.js', 'dist/styles/{,*/}*.css', '!dist/scripts/vendor/*'])
-    .pipe($.modernizr())
-    .pipe($.uglify())
-    .pipe(gulp.dest('dist/scripts/vendor/'));
-});
+function modernizerTask(dest) {
+  return () => {
+    gulp
+      .src([`${dest}/scripts/{,*/}*.js`, `${dest}/styles/{,*/}*.css`, `!${dest}/scripts/vendor/*`])
+      .pipe($.modernizr())
+      .pipe($.uglify())
+      .pipe(gulp.dest(`${dest}/scripts/vendor/`));
+  };
+}
+
+gulp.task('modernizr:serve', modernizerTask('.tmp'));
+
+gulp.task('modernizr:build', modernizerTask('dist'));
 
 gulp.task('rev', () => {
   gulp
@@ -150,12 +159,65 @@ gulp.task('extras', () => {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('lint:css', function lintCssTask() {
+  return gulp.src('src/styles/**/*.css').pipe(
+    gulpStylelint({
+      reporters: [{ formatter: 'string', console: true }]
+    })
+  );
+});
+
+//Pre-caching
+function generateSW(dist) {
+  return workbox.generateSW({
+    globDirectory: dist,
+    globPatterns: ['**/*.{html,js,css}'],
+    swDest: `${dist}/sw.js`,
+    clientsClaim: true,
+    skipWaiting: true,
+    runtimeCaching: [
+      {
+        urlPattern: /\.jpg$/,
+        handler: 'cacheFirst'
+      }
+    ]
+  });
+}
+
+gulp.task('sw:build', () => {
+  return generateSW('dist')
+    .then(({ warnings }) => {
+      // In case there are any warnings from workbox-build, log them.
+      for (const warning of warnings) {
+        console.warn(warning);
+      }
+      console.info('Service worker generation completed.');
+    })
+    .catch(error => {
+      console.warn('Service worker generation failed:', error);
+    });
+});
+
+gulp.task('sw:serve', () => {
+  return generateSW('.tmp')
+    .then(({ warnings }) => {
+      // In case there are any warnings from workbox-build, log them.
+      for (const warning of warnings) {
+        console.warn(warning);
+      }
+      console.info('Service worker generation completed.');
+    })
+    .catch(error => {
+      console.warn('Service worker generation failed:', error);
+    });
+});
+
 // I dont need to clean dist as the clean task is called on serve only
 gulp.task('clean:build', del.bind(null, ['dist']));
 gulp.task('clean:serve', del.bind(null, ['.tmp']));
 
 // @Task is used to optimize images in src directory
-gulp.task('images', () => {
+gulp.task('optimize:images', () => {
   return gulp
     .src('src/images/**/*')
     .pipe(
@@ -173,6 +235,12 @@ gulp.task('images', () => {
       )
     )
     .pipe(gulp.dest('dist/images'));
+});
+
+gulp.task('images', () => {
+  return gulp
+    .src('src/images/**/*')
+    .pipe($.if(dev, gulp.dest('.tmp/images'), gulp.dest('dist/images')));
 });
 
 // @Task unused one
@@ -208,34 +276,43 @@ gulp.task('serve:test', ['scripts'], () => {
 
 // @Task `serve` is used to serve the content in dev mode
 gulp.task('serve', () => {
-  runSequence(['clean:serve'], ['views', 'styles', 'scripts', 'fonts', 'svgSprite'], () => {
-    browserSync.init({
-      notify: false,
-      port: 9000,
-      server: {
-        baseDir: ['.tmp', 'src'],
-        routes: {
-          '/node_modules': 'node_modules'
+  runSequence(
+    ['clean:serve'],
+    ['lint:js', 'lint:css'],
+    ['views', 'styles', 'scripts', 'fonts', 'svgSprite'],
+    ['modernizr:serve'],
+    ['sw:serve'],
+    () => {
+      browserSync.init({
+        notify: false,
+        port: 9000,
+        server: {
+          baseDir: ['.tmp', 'src'],
+          routes: {
+            '/node_modules': 'node_modules'
+          }
         }
-      }
-    });
+      });
 
-    gulp.watch(['.tmp/*.html', 'src/images/**/*', '.tmp/fonts/**/*']).on('change', reload);
-    gulp.watch('src/**/*.pug', ['views']);
-    gulp.watch('src/styles/**/*.css', ['styles']);
-    gulp.watch('src/scripts/**/*.js', ['scripts']);
-    gulp.watch('src/fonts/**/*', ['fonts']);
-    gulp.watch('bower.json', ['fonts']);
-  });
+      gulp.watch(['.tmp/*.html', 'src/images/**/*', '.tmp/fonts/**/*']).on('change', reload);
+      gulp.watch('src/**/*.pug', ['views']);
+      gulp.watch('src/styles/**/*.css', ['styles', 'lint:css']);
+      gulp.watch('src/scripts/**/*.js', ['scripts', 'lint:js']);
+      gulp.watch('src/images/**/*', ['optimize:images']);
+      gulp.watch('src/fonts/**/*', ['fonts']);
+      gulp.watch('bower.json', ['fonts']);
+    }
+  );
 });
 
 // @Task `build` is used to build a production ready dist
 gulp.task('build', () => {
-  deb = false;
+  dev = false;
   runSequence(
     ['clean:build'],
     ['html', 'svgSprite', 'fonts', 'extras'],
-    ['rev', 'modernizr'],
+    ['rev', 'modernizr:build', 'images'],
+    ['sw:build'],
     () => {
       return gulp.src('dist/**/*').pipe($.size({ title: 'build', gzip: true }));
     }

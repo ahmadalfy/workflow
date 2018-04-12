@@ -3,6 +3,7 @@
 @import 'settings/colors.css';
 
 /* Tools – globally used mixins and functions. It’s important not to output any CSS in the first 2 layers. */
+
 /* Functions */
 
 /* Mixins */
@@ -17,16 +18,7 @@
 @import 'elements/body.css';
 
 /* Objects – class-based selectors which define undecorated design patterns, for example media object known from OOCSS */
-@import 'objects/headings.css';
-@import 'objects/button.css';
-@import 'objects/grid.css';
-@import 'objects/content.css';
-@import 'objects/tabs.css';
-@import 'objects/slider.css';
-@import 'objects/vertical-center.css';
-@import 'objects/circle-text.css';
-@import 'objects/banner-list.css';
-@import 'objects/circles-list.css';
+
 /* Components – specific UI components. This is where majority of our work takes place and our UI components are often composed of Objects and Components */
 
 /* Utilities – utilities and helper classes with ability to override anything which goes before in the triangle, eg. hide helper class */
