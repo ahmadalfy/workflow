@@ -6,5 +6,5 @@ test/bower_components
 .DS_STORE
 extra/
 deploy.sh
-
+.vscode
 *.log
