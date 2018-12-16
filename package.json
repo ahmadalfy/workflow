@@ -7,7 +7,6 @@
     "optimize:images": "gulp optimize:images",
     "build": "gulp build",
     "start": "gulp serve",
-    "prepush": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint src/scripts/**/*.js --color",
     "lint:css": "stylelint src/styles/**/*.css --color --fix",
     "format": "prettier --write --single-quote --semi=true --parser=flow --tab-width=2 \"src/scripts/**/*.js\""
@@ -51,7 +50,7 @@
     "gulp-svgmin": "^1.2.4",
     "gulp-uglify": "^3.0.0",
     "gulp-useref": "^3.0.0",
-    "husky": "^0.14.3",
+    "husky": "^1.2.1",
     "main-bower-files": "^2.13.1",
     "postcss-cssnext": "^3.0.2",
     "postcss-dir-pseudo-class": "^2.1.0",
@@ -71,5 +70,10 @@
   "browserslist": [
     "defaults",
     "not ie < 11"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint:js && npm run lint:css"
+    }
+  }
 }
