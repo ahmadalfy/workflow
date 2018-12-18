@@ -65,10 +65,6 @@
     "workbox-build": "^3.0.0"
   },
   "dependencies": {},
-  "browserslist": [
-    "defaults",
-    "not ie < 11"
-  ],
   "husky": {
     "hooks": {
       "pre-push": "npm run lint:js && npm run lint:css"
