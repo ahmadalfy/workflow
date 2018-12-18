@@ -18,6 +18,7 @@
 @import 'elements/body.css';
 
 /* Objects – class-based selectors which define undecorated design patterns, for example media object known from OOCSS */
+@import 'objects/grid.css';
 
 /* Components – specific UI components. This is where majority of our work takes place and our UI components are often composed of Objects and Components */
 
