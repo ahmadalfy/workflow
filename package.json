@@ -24,7 +24,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-prettier": "^3.0.0",
     "gulp": "^4.0.0",
-    "gulp-cache": "^0.4.2",
+    "gulp-cache": "^1.0.2",
     "gulp-cssnano": "^2.0.0",
     "gulp-data": "^1.2.1",
     "gulp-eslint": "^5.0.0",
