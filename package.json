@@ -49,7 +49,6 @@
     "husky": "^1.2.1",
     "install": "^0.12.2",
     "main-bower-files": "^2.13.1",
-    "npm": "^6.5.0",
     "postcss-cssnext": "^3.0.2",
     "postcss-dir-pseudo-class": "^2.1.0",
     "postcss-import": "^11.0.0",
