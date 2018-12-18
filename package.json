@@ -36,7 +36,7 @@
     "gulp-modernizr": "^1.0.0-alpha",
     "gulp-plumber": "^1.0.1",
     "gulp-postcss": "^7.0.0",
-    "gulp-pug": "^3.3.0",
+    "gulp-pug": "^4.0.1",
     "gulp-rev-all": "^0.9.7",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.6.2",
