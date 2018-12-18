@@ -60,10 +60,5 @@
     "vinyl-source-stream": "^2.0.0",
     "workbox-build": "^3.0.0"
   },
-  "dependencies": {},
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run lint:js && npm run lint:css"
-    }
-  }
+  "dependencies": {}
 }

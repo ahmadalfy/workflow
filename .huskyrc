@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "pre-push": "npm run lint:js && npm run lint:css",
+    "pre-commit": "lint-staged"
+  }
+}
