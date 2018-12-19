@@ -1,5 +1,7 @@
 # Robusta's HTML Workflow
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ahmadalfy/workflow.svg)](https://greenkeeper.io/)
+
 ## Tasks
   Tasks can be run by running `yarn gulp TASK_NAME`. If you prefer to use your global gulp installation then `gulp TASK_NAME`.
 - *`build`* To build production ready dist.
