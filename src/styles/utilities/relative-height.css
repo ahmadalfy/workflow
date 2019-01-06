@@ -1,11 +1,11 @@
 .full-height {
-  height: calc(100vh + 20px);
+	height: calc(100vh + 20px);
 }
 
 .half-height {
-  height: 50vh;
+	height: 50vh;
 }
 
 .three-quarter-height {
-  height: 75vh;
+	height: 75vh;
 }

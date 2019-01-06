@@ -1,14 +1,14 @@
 .clearfix::before,
 .clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
+	content: '';
+	clear: both;
+	display: table;
 }
 
 .pull-start {
-  float: inline-start;
+	float: inline-start;
 }
 
 .pull-end {
-  float: inline-end;
+	float: inline-end;
 }
