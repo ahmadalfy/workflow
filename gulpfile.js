@@ -37,7 +37,7 @@ gulp.task('scripts', () => {
 	return bundler
 		.bundle()
 		.on('error', err => {
-			console.error(err); /* eslint-disable-line */
+			console.error(err); // eslint-disable-line
 			this.emit('end');
 		})
 		.pipe(source('main.js'))
@@ -178,9 +178,9 @@ gulp.task('sw:build', () =>
 	generateSW('dist')
 		.then(({ warnings }) => {
 			// In case there are any warnings from workbox-build, log them.
-			for (const warning of warnings) { /* eslint-disable-line */
-				console.warn(warning); /* eslint-disable-line */
-			}
+			warnings.forEach(warning => {
+				console.warn(warning); // eslint-disable-line
+			});
 			console.info('Service worker generation completed.'); /* eslint-disable-line */
 		})
 		.catch(error => {
@@ -192,9 +192,9 @@ gulp.task('sw:serve', () =>
 	generateSW('.tmp')
 		.then(({ warnings }) => {
 			// In case there are any warnings from workbox-build, log them.
-			for (const warning of warnings) { /* eslint-disable-line */
-				console.warn(warning); /* eslint-disable-line */
-			}
+			warnings.forEach(warning => {
+				console.warn(warning); // eslint-disable-line
+			});
 			console.info('Service worker generation completed.'); /* eslint-disable-line */
 		})
 		.catch(error => {
