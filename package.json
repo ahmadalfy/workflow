@@ -8,8 +8,7 @@
 		"build": "gulp build",
 		"start": "gulp serve",
 		"lint:js": "eslint src/scripts/**/*.js --color",
-		"lint:css": "stylelint src/styles/**/*.css --color --fix",
-		"format": "prettier --write --single-quote --semi=true --parser=flow --tab-width=2 \"src/scripts/**/*.js\""
+		"lint:css": "stylelint src/styles/**/*.css --color"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.2.2",
