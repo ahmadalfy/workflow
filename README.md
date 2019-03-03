@@ -1,12 +1,11 @@
-# Robusta's HTML Workflow
+# HTML Workflow
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/ahmadalfy/workflow.svg)](https://greenkeeper.io/)
 
 ## Tasks
-  Tasks can be run by running `yarn gulp TASK_NAME`. If you prefer to use your global gulp installation then `gulp TASK_NAME`.
+	Tasks can be run by running `yarn gulp TASK_NAME`. If you prefer to use your global gulp installation then `gulp TASK_NAME`.
 - *`build`* To build production ready dist.
 - *`serve`* To serve content in dev mode.
-- *`optimize:images`* To optimizes images in the src directory and should be run whenever you add a new image.
 - *`default`* which is run by executing `gulp` or `yarn gulp` and it's the same as `serve`
 
 ## Available scripts

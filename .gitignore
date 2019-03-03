@@ -8,3 +8,7 @@ extra/
 deploy.sh
 .vscode
 *.log
+svg-defs.svg
+firebase-debug.log
+npm-debug.log
+
