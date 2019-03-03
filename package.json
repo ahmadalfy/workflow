@@ -17,7 +17,7 @@
 		"babelify": "^10.0.0",
 		"browser-sync": "^2.2.1",
 		"browserify": "^16.2.3",
-		"del": "^3.0.0",
+		"del": "^4.0.0",
 		"eslint": "^5.10.0",
 		"eslint-config-airbnb-base": "^13.1.0",
 		"eslint-config-prettier": "^4.1.0",
