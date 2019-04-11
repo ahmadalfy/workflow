@@ -56,7 +56,9 @@
 		"postcss-retina-bg-img": "^4.1.0",
 		"prettier": "^1.16.4",
 		"stylelint": "^9.10.1",
+		"stylelint-config-prettier": "^5.0.0",
 		"stylelint-config-standard": "^18.2.0",
+		"stylelint-prettier": "^1.0.6",
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
 		"workbox-build": "^4.2.0"
