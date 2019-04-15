@@ -23,7 +23,7 @@ These scripts can be run by `yarn SCRIPT_NAME` or `npm run SCRIPT_NAME`. They're
 - We added gulp-rev-all in an attempt to use revisioned files.
 - We separated the images optimization task from the build queue to be run on its own
 - We added stylelint to lint css too.
-- Added sw-support but disabled by default. You need to uncomment `registerServiceWorker()` in main.js to enable it.
+- Added service worker support but disabled by default. You need to uncomment `registerServiceWorker()` in main.js to enable it.
 
 ## TODO
 - Finetune the precommit & prepush hooks
