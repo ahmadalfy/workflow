@@ -31,7 +31,7 @@
 		"gulp-filter": "^6.0.0",
 		"gulp-htmlmin": "^5.0.1",
 		"gulp-if": "^2.0.2",
-		"gulp-imagemin": "^5.0.3",
+		"gulp-imagemin": "^6.0.0",
 		"gulp-load-plugins": "^1.2.4",
 		"gulp-modernizr": "^3.2.1",
 		"gulp-plumber": "^1.0.1",
