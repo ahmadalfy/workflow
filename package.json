@@ -27,7 +27,7 @@
 		"gulp-cache": "^1.1.1",
 		"gulp-cssnano": "^2.0.0",
 		"gulp-data": "^1.2.1",
-		"gulp-eslint": "^5.0.0",
+		"gulp-eslint": "^6.0.0",
 		"gulp-filter": "^6.0.0",
 		"gulp-htmlmin": "^5.0.1",
 		"gulp-if": "^2.0.2",
