@@ -46,7 +46,7 @@
 		"husky": "^2.0.0",
 		"imagemin-lint-staged": "^0.4.0",
 		"install": "^0.12.2",
-		"lint-staged": "^8.1.5",
+		"lint-staged": "^9.0.0",
 		"postcss-dir-pseudo-class": "^5.0.0",
 		"postcss-easy-import": "^3.0.0",
 		"postcss-import": "^12.0.1",
