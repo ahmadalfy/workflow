@@ -1,5 +1,5 @@
 {
 	"*.{png,jpeg,jpg,gif,svg}": ["imagemin-lint-staged", "git add"],
-	"*.js": ["npm run lint:js"],
-	"*.css": ["npm run lint:css"],
+	"*.js": ["eslint"],
+	"*.css": ["stylelint"],
 }

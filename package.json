@@ -9,14 +9,19 @@
 		"start": "gulp serve",
 		"lint:js": "eslint src/scripts/**/*.js --color",
 		"lint:css": "stylelint src/styles/**/*.css --color --fix",
-		"format": "prettier --write --single-quote --semi=true --parser=flow --tab-width=2 \"src/scripts/**/*.js\""
+		"format": "prettier --write --single-quote --semi=true --parser=flow --tab-width=2 \"src/scripts/**/*.js\"",
+		"commit": "git-cz"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.4.3",
 		"@babel/preset-env": "^7.4.3",
+		"@commitlint/cli": "^8.1.0",
+		"@commitlint/config-conventional": "^8.1.0",
 		"babelify": "^10.0.0",
 		"browser-sync": "^2.2.1",
 		"browserify": "^16.2.3",
+		"commitizen": "^3.1.2",
+		"cz-conventional-changelog": "^2.1.0",
 		"del": "^5.0.0",
 		"eslint": "^6.0.0",
 		"eslint-config-airbnb-base": "^13.1.0",
@@ -62,6 +67,11 @@
 		"vinyl-buffer": "^1.0.1",
 		"vinyl-source-stream": "^2.0.0",
 		"workbox-build": "^4.2.0"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
 	},
 	"dependencies": {}
 }

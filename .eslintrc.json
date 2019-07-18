@@ -1,5 +1,5 @@
 {
-	"extends": ["airbnb-base", "plugin:prettier/recommended"],
+	"extends": ["eslint:recommended", "plugin:prettier/recommended"],
 	"plugins": ["prettier"],
 	"rules": {
 		"prettier/prettier": ["error"]
@@ -10,6 +10,7 @@
 	},
 	"env": {
 		"es6": true,
-		"browser": true
+		"browser": true,
+		"node": true
 	}
 }
