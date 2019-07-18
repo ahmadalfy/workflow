@@ -10,6 +10,7 @@
 
 ## Available scripts
 These scripts can be run by `yarn SCRIPT_NAME` or `npm run SCRIPT_NAME`. They're available in `package.json` with key: `scripts`
+- `commit` Use this script to commit your changes
 - `optimize:images` It executes the `images` task
 - `build` It executes the `build` task
 - `start` It executes the `serve` task
@@ -26,6 +27,6 @@ These scripts can be run by `yarn SCRIPT_NAME` or `npm run SCRIPT_NAME`. They're
 - Added service worker support but disabled by default. You need to uncomment `registerServiceWorker()` in main.js to enable it.
 
 ## TODO
-- Finetune the precommit & prepush hooks
-- Finetune gulp-rev-all task and replace it if needed
-- Add service workers support using workbox
+- [x] Finetune the precommit & prepush hooks
+- [ ] Finetune gulp-rev-all task and replace it if needed
+- [ ] Add service workers support using workbox
