@@ -24,10 +24,10 @@ let dev = true;
 gulp.task('styles', () =>
 	gulp
 		.src('./src/styles/*.css')
-		.pipe(sourcemaps.init())
+		.pipe($.if(dev, sourcemaps.init()))
 		.pipe($.plumber())
 		.pipe($.postcss())
-		.pipe(sourcemaps.write('.'))
+		.pipe($.if(dev, sourcemaps.write('.')))
 		.pipe(gulp.dest('.tmp/styles'))
 		.pipe(reload({ stream: true }))
 );
@@ -137,7 +137,6 @@ gulp.task(
 			.src('.tmp/**/*[.html, .js, .css]')
 			.pipe($.useref({ searchPath: ['.tmp', 'src', '.'] }))
 			.pipe($.if(/\.js$/, $.uglify({ compress: { drop_console: true } })))
-			.pipe($.if(/\.css$/, $.cssnano({ safe: true, autoprefixer: false })))
 			.pipe(
 				$.if(
 					/\.html$/,
