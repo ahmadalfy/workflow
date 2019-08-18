@@ -6,8 +6,11 @@ module.exports = {
 		'postcss-dir-pseudo-class': {},
 		'postcss-preset-env': { stage: 0 },
 		'postcss-nested': {},
-		'postcss-retina-bg-img': {
-			retinaSuffix: '@2x',
+		'postcss-retina-bg-img': { retinaSuffix: '@2x' },
+		cssnano: {
+			discardComments: {
+				removeAll: true,
+			},
 		},
 	},
 };
