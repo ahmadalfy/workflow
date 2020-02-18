@@ -39,7 +39,7 @@
 		"gulp-if": "^3.0.0",
 		"gulp-imagemin": "^7.1.0",
 		"gulp-load-plugins": "^2.0.2",
-		"gulp-modernizr": "^3.4.0",
+		"gulp-modernizr": "^3.4.1",
 		"gulp-plumber": "^1.0.1",
 		"gulp-postcss": "^8.0.0",
 		"gulp-pug": "^4.0.1",
