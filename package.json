@@ -19,7 +19,7 @@
 		"@commitlint/config-conventional": "^8.3.4",
 		"babelify": "^10.0.0",
 		"browser-sync": "^2.26.7",
-		"browserify": "^16.5.0",
+		"browserify": "^16.5.1",
 		"commitizen": "^4.0.3",
 		"cssnano": "^4.1.10",
 		"cssnano-preset-default": "^4.0.7",
