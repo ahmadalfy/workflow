@@ -34,6 +34,7 @@ const svgOptions = {
 		},
 	},
 };
+
 module.exports = {
 	config: {
 		path,
