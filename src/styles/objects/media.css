@@ -1,0 +1,16 @@
+.media {
+	display: flex;
+	align-items: flex-start;
+
+	&__image {
+		margin-inline-end: 40px;
+	}
+
+	&__content {
+		flex: 1;
+	}
+
+	& + .media {
+		margin-top: 80px;
+	}
+}

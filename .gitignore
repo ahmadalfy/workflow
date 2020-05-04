@@ -1,14 +1,6 @@
 node_modules
 dist
 .tmp
-bower_components
-test/bower_components
 .DS_STORE
-extra/
-deploy.sh
 .vscode
 *.log
-svg-defs.svg
-firebase-debug.log
-npm-debug.log
-
