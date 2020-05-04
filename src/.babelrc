@@ -1,0 +1,18 @@
+{
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"useBuiltIns": "entry",
+				"corejs": "3.0.0",
+				"targets": {
+						"esmodules": true,
+						"ie": "11"
+				}
+			}
+		]
+	],
+	"plugins": [
+		["snowpack/assets/babel-plugin.js", {"addVersion": true}]
+	]
+}

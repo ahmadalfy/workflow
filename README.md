@@ -1,32 +1,58 @@
-# HTML Workflow
+# Frontend Modern Workflow
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/ahmadalfy/workflow.svg)](https://greenkeeper.io/)
+This is a complete revamp of the old workflow, rewritten from scratch with far less dependencies than the original version.
 
-## Tasks
-	Tasks can be run by running `yarn gulp TASK_NAME`. If you prefer to use your global gulp installation then `gulp TASK_NAME`.
-- *`build`* To build production ready dist.
-- *`serve`* To serve content in dev mode.
-- *`default`* which is run by executing `gulp` or `yarn gulp` and it's the same as `serve`
+## Highlights in version 2
 
-## Available scripts
+* Deprecating Gulp and moving to npm scripts. Gulp has been a great tool for so many years but recently it became stagnant and most of its plugins become outdated and suffer from security issues. With npm scripts we got more granularity and agility.
+
+* Deprecating Browserify and moving to [Snowpack](https://www.snowpack.dev/). Snowpack is a tool that converts node modules into web modules. Best described by the following image from Snowpack documentation:
+
+    ![img](https://www.snowpack.dev/img/how-does-it-work.jpg)
+
+    This eliminiate the need to bundle the code, ship code with less boilerplate, more efficient with cache invalidation ... There is a lot of interesting stuff you can check at Snowpack documentation.
+
+* All tasks have unit tests.
+
+* Prettier and more informative console messages.
+
+## What does this workflow provide
+
+* Initialize development server using BrowserSync.
+* Automatically refresh and reload the browser when assets change.
+* Build HTML templates using pug.
+* Use PostCSS plugins to speed up your work with CSS. The styles directory and files are follows the architecure descriped by Harry Roberts; [ITCSS](https://itcss.io/). This workflow is configured with the following PostCSS plugins
+  * PostCSS dir pseudo class
+  * PostCSS import
+  * PostCSS logical
+  * PostCSS nested
+  * PostCSS preset-env
+  * PostCSS reporter
+  * PostCSS retina-bg-img
+* Images optimization through imagemin
+* Copying static assets (like images and fonts) from source to final dist directory.
+* Generate SVG sprites from the images you provide.
+* Babel configured, just drop in the plugins you want to use.
+* ESling and prettier
+* Git hooks through Husky and Lint staged
+* Commit messages forced to follow [Conventional commits](https://conventionalcommits.org).
+
+## Getting started
+
+* Clone the repository then remove the `.git` folder.
+* Check the `src` folder. All your code should be on that directory.
+
+### Available tasks
+
 These scripts can be run by `yarn SCRIPT_NAME` or `npm run SCRIPT_NAME`. They're available in `package.json` with key: `scripts`
-- `commit` Use this script to commit your changes
-- `optimize:images` It executes the `images` task
-- `build` It executes the `build` task
-- `start` It executes the `serve` task
-- `prepush` This command is run as a pre-push hook by husky. Which means everytime you try to push you code to remote, it will execute this task. Currently it lints js & css.
-- `lint:js` Lints js scripts in src
-- `lint:css` Lints css files in src
-- `format`: Format files in src
 
-## New Features
-- We added husky for precommit & prepush hooks.
-- We added gulp-rev-all in an attempt to use revisioned files.
-- We separated the images optimization task from the build queue to be run on its own
-- We added stylelint to lint css too.
-- Added service worker support but disabled by default. You need to uncomment `registerServiceWorker()` in main.js to enable it.
+* `snowpack` copies the scripts you configure from `node_modules` to `web_modules`. You will need to run this command every time you install a new dependency
+* `test` run the workflow unit tests. You probably will need to override this with your own tests.
+* `dev` starts the development server.
+* `build` run the necessary scripts to build your application.
 
-## TODO
-- [x] Finetune the precommit & prepush hooks
-- [ ] Finetune gulp-rev-all task and replace it if needed
-- [ ] Add service workers support using workbox
+## Todo
+
+* Write better documentation for getting started.
+* Cache busting for scripts written by developers.
+* Support for WebP and options to generate them automatically.

@@ -1,0 +1,19 @@
+h1 {
+	color: red;
+
+	span {
+		&.super {
+			text-transform: capitalize;
+		}
+	}
+}
+h2 {
+	color: blue;
+}
+.test-container {
+	display: flex;
+
+	&__paragraph {
+		color: green;
+	}
+}

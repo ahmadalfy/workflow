@@ -1,0 +1,15 @@
+{
+	"webDependencies": [],
+  "installOptions": {
+    "dest": "./src/scripts/web_modules",
+    "clean": false,
+    "optimize": false,
+    "babel": false,
+		"include": "src/**/*.{js,jsx,ts,tsx}",
+    "exclude": ["**/__tests__/*", "**/*.@(spec|test).@(js|mjs)"],
+    "strict": false,
+    "sourceMap": false,
+    "nomodule": "./src/scripts/main.js",
+    "nomoduleOutput": "../app.nomodule.js"
+  }
+}

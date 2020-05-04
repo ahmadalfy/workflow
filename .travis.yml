@@ -1,11 +1,8 @@
 language: node_js
 sudo: false
 node_js:
-- [6,7,8]
-- 10
+- 12
 cache:
 	yarn: true
 script:
-	- yarn build
-before_install:
-	- export PATH="$HOME/.yarn/bin:$PATH"
+	- npm run build
