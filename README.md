@@ -35,6 +35,7 @@ This is a complete revamp of the old workflow, rewritten from scratch with far l
 * Babel configured, just drop in the plugins you want to use.
 * ESling and prettier
 * Git hooks through Husky and Lint staged
+* Commit messages forced to follow [Conventional commits](https://conventionalcommits.org).
 
 ## Getting started
 
