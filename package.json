@@ -40,7 +40,7 @@
 		"postcss-nested": "^4.2.1",
 		"postcss-preset-env": "^6.7.0",
 		"postcss-reporter": "^6.0.1",
-		"postcss-retina-bg-img": "^5.0.0",
+		"postcss-retina-bg-img": "^5.0.1",
 		"prettier": "^2.0.5",
 		"pug": "^2.0.4",
 		"rimraf": "^3.0.2",
