@@ -14,7 +14,10 @@ module.exports = {
 		require('postcss-dir-pseudo-class'),
 		require('postcss-preset-env'),
 		require('postcss-nested'),
-		require('postcss-retina-bg-img')({ retinaSuffix: '@2x' }),
+		require('postcss-retina-bg-img')({
+			retinaSuffix: '@2x',
+			logMissingImages: false,
+		}),
 		require('cssnano'),
 		require('postcss-reporter')({ clearReportedMessages: true }),
 	],
