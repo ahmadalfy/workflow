@@ -31,7 +31,7 @@
 		"jest": "^26.0.1",
 		"lint-staged": "^10.2.7",
 		"ncp": "^2.0.0",
-		"postcss": "^7.0.31",
+		"postcss": "^7.0.32",
 		"postcss-dir-pseudo-class": "^5.0.0",
 		"postcss-easy-import": "^3.0.0",
 		"postcss-import": "^12.0.1",
