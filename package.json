@@ -13,7 +13,7 @@
 		"runner": "node ./scripts/task-runner/tasks.js"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.10.2",
+		"@babel/core": "^7.10.3",
 		"@commitlint/cli": "^9.0.1",
 		"@commitlint/config-conventional": "^9.0.1",
 		"babel-jest": "^26.0.1",
@@ -46,7 +46,7 @@
 		"rimraf": "^3.0.2",
 		"snowpack": "^1.7.1",
 		"stylelint": "^13.6.1",
-		"stylelint-config-prettier": "^8.0.1",
+		"stylelint-config-prettier": "^8.0.2",
 		"stylelint-config-recommended": "^3.0.0",
 		"stylelint-prettier": "^1.1.2",
 		"svg-sprite": "^1.5.0",
