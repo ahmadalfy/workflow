@@ -16,7 +16,7 @@
 		"@babel/core": "^7.10.3",
 		"@commitlint/cli": "^9.0.1",
 		"@commitlint/config-conventional": "^9.0.1",
-		"babel-jest": "^26.0.1",
+		"babel-jest": "^26.1.0",
 		"babel-minify": "^0.5.1",
 		"browser-sync": "^2.26.7",
 		"chalk": "^4.1.0",
