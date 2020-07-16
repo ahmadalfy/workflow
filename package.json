@@ -20,7 +20,7 @@
 		"babel-minify": "^0.5.1",
 		"browser-sync": "^2.26.7",
 		"chalk": "^4.1.0",
-		"chokidar": "^3.4.0",
+		"chokidar": "^3.4.1",
 		"core-js": "^3.6.5",
 		"cssnano": "^4.1.10",
 		"eslint": "^7.4.0",
