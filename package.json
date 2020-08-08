@@ -18,7 +18,7 @@
 		"@commitlint/config-conventional": "^9.1.1",
 		"babel-jest": "^26.2.1",
 		"babel-minify": "^0.5.1",
-		"browser-sync": "^2.26.10",
+		"browser-sync": "^2.26.12",
 		"chalk": "^4.1.0",
 		"chokidar": "^3.4.2",
 		"core-js": "^3.6.5",
