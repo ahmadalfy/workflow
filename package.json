@@ -13,7 +13,7 @@
 		"runner": "node ./scripts/task-runner/tasks.js"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.11.0",
+		"@babel/core": "^7.11.1",
 		"@commitlint/cli": "^9.1.1",
 		"@commitlint/config-conventional": "^9.1.1",
 		"babel-jest": "^26.2.1",
