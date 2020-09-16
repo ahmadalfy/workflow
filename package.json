@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.11.6",
-		"@commitlint/cli": "^9.1.2",
+		"@commitlint/cli": "^11.0.0",
 		"@commitlint/config-conventional": "^11.0.0",
 		"babel-jest": "^26.3.0",
 		"babel-minify": "^0.5.1",
@@ -31,7 +31,7 @@
 		"jest": "^26.4.0",
 		"lint-staged": "^10.3.0",
 		"ncp": "^2.0.0",
-		"postcss": "^7.0.32",
+		"postcss": "^8.0.2",
 		"postcss-dir-pseudo-class": "^5.0.0",
 		"postcss-easy-import": "^3.0.0",
 		"postcss-import": "^12.0.1",
