@@ -29,7 +29,7 @@
 		"husky": "^4.3.0",
 		"imagemin-lint-staged": "^0.4.0",
 		"jest": "^26.4.0",
-		"lint-staged": "^10.3.0",
+		"lint-staged": "^10.4.0",
 		"ncp": "^2.0.0",
 		"postcss": "^8.0.5",
 		"postcss-dir-pseudo-class": "^5.0.0",
