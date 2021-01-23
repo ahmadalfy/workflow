@@ -45,7 +45,7 @@
 		"pug": "^3.0.0",
 		"rimraf": "^3.0.2",
 		"snowpack": "^1.7.1",
-		"stylelint": "^13.8.0",
+		"stylelint": "^13.9.0",
 		"stylelint-config-prettier": "^8.0.2",
 		"stylelint-config-recommended": "^3.0.0",
 		"stylelint-prettier": "^1.1.2",
