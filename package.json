@@ -42,7 +42,7 @@
 		"postcss-reporter": "^7.0.2",
 		"postcss-retina-bg-img": "^5.0.1",
 		"prettier": "^2.2.1",
-		"pug": "^3.0.0",
+		"pug": "^3.0.2",
 		"rimraf": "^3.0.2",
 		"snowpack": "^1.7.1",
 		"stylelint": "^13.12.0",
