@@ -37,7 +37,7 @@
 		"postcss": "^8.2.9",
 		"postcss-dir-pseudo-class": "^5.0.0",
 		"postcss-easy-import": "^3.0.0",
-		"postcss-import": "^14.0.0",
+		"postcss-import": "^14.0.1",
 		"postcss-load-config": "^3.0.1",
 		"postcss-logical": "^4.0.2",
 		"postcss-nested": "^5.0.5",
