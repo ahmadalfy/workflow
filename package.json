@@ -31,7 +31,7 @@
 		"eslint-plugin-prettier": "^3.4.0",
 		"husky": "^6.0.0",
 		"imagemin-lint-staged": "^0.4.0",
-		"jest": "^27.1.0",
+		"jest": "^27.3.0",
 		"lint-staged": "^11.1.2",
 		"ncp": "^2.0.0",
 		"postcss": "^8.2.10",
