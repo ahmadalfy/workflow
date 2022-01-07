@@ -42,7 +42,7 @@
 		"postcss-logical": "^5.0.0",
 		"postcss-nested": "^5.0.6",
 		"postcss-preset-env": "^6.7.0",
-		"postcss-reporter": "^7.0.2",
+		"postcss-reporter": "^7.0.5",
 		"postcss-retina-bg-img": "^5.0.1",
 		"prettier": "^2.5.1",
 		"pug": "^3.0.2",
